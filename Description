@@ -1,0 +1,17 @@
+# Grid Node Recommendation System
+
+A Python-based framework that uses Machine Learning to optimize power distribution network management. The system predicts future load demands on a power grid and automatically identifies the most suitable substation (node) to handle the load without risking overloading.
+
+The implementation is broken down into three straightforward steps:
+
+1. Predictive Load Forecasting
+The script utilizes a **Linear Regression** model from `scikit-learn` trained on historical consumption data. It analyzes past trends over time to forecast the exact power demand (in MW) for an upcoming time step.
+
+2. Capacity & Safety Margin Check
+Once the incoming load is predicted, the code evaluates a network of available substations by checking their maximum capacities. It calculates the remaining available headroom for each node and applies a strict **safety buffer** to ensure no substation is pushed past its physical threshold.
+
+3. Optimal Selection
+The program calculates a suitability score for each available node:
+$$\text{Score} = \text{Available Capacity} - \text{Safety Margin}$$
+
+It then sorts the options and outputs the best recommended substation along with the analytical reasoning behind the choice.
